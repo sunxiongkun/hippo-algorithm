@@ -4,6 +4,6 @@
 
 data structure algorithm summary
 
-![avatar](https://raw.githubusercontent.com/sunxiongkun/warehouse/master/img/dsa/algorithm-summary-001.jpg)
-
 ![avatar](../static/img/algorithm-summary-001.jpg)
+
+
