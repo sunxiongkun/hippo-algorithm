@@ -15,7 +15,7 @@ import java.util.Stack;
 public class BasicTree {
 
   public static void main(String[] args) {
-    TreeNode root = createTestTree();
+    TreeNode root = createFullBinaryTree();
 
     System.out.println("=============前序遍历===============");
     ArrayList<String> resultPreOrder = new ArrayList<String>();
@@ -46,9 +46,9 @@ public class BasicTree {
    * *********root        // 0    2   3
    * ******11       12    // 1    1   2
    * ***21  22   23  24   // 2    0   1
-   * return
+   * return 满二叉树
    */
-  public static TreeNode createTestTree() {
+  public static TreeNode createFullBinaryTree() {
     TreeNode root = new TreeNode("root");
     TreeNode t11 = new TreeNode("11");
     TreeNode t12 = new TreeNode("12");
@@ -66,6 +66,40 @@ public class BasicTree {
 
     t12.setLeftNode(t23);
     t12.setRightNode(t24);
+    return root;
+  }
+
+  /********************** // 深度 高度 层
+   * *********root        // 0    3   4
+   * ******11       12    // 1    2   3
+   * ***21  22   23  24   // 2    1   2
+   * 31   32              // 3    0   1
+   * return 完全二叉树
+   */
+  public static TreeNode createLeftFullBinaryTree() {
+    TreeNode root = new TreeNode("root");
+    TreeNode t11 = new TreeNode("11");
+    TreeNode t12 = new TreeNode("12");
+
+    TreeNode t21 = new TreeNode("21");
+    TreeNode t22 = new TreeNode("22");
+    TreeNode t23 = new TreeNode("23");
+    TreeNode t24 = new TreeNode("24");
+
+    TreeNode t31 = new TreeNode("31");
+    TreeNode t32 = new TreeNode("32");
+
+    root.setLeftNode(t11);
+    root.setRightNode(t12);
+
+    t11.setLeftNode(t21);
+    t11.setRightNode(t22);
+
+    t12.setLeftNode(t23);
+    t12.setRightNode(t24);
+
+    t21.setLeftNode(t31);
+    t21.setRightNode(t32);
     return root;
   }
 

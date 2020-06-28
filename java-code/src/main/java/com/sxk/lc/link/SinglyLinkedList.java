@@ -1,4 +1,4 @@
-package com.sxk.lessons.link;
+package com.sxk.lc.link;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

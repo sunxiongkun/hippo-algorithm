@@ -1,4 +1,4 @@
-package com.sxk.lc;
+package com.sxk.lc.str;
 
 public class StringOperation {
 

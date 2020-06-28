@@ -39,6 +39,14 @@ public class BinaryAdvanced {
 
   }
 
+
+  /**
+   * 两次二分法:
+   * 第一次：start和mid比较，判断是在左上还是右下：A[start] < A[mid]在左上；A[start] > A[mid] 在右下
+   * 第二次：在有解的那一半中继续二分：
+   * 左上start<=target<=mid end = mid;否则start = mid;
+   * 右下mid<=target<=end start = mid;否则end = mid;
+   */
   public static int searchRotateArray(int[] array, int target) {
 
     int start = 0;

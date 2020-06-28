@@ -12,6 +12,7 @@ public class TwoNumberAdd {
     l12.setNext(l13);
     ListNode l2 = new ListNode(2);
     System.out.println(l1);
+    System.out.println(l2);
     System.out.println(addTwoNumbers(l1, l2));
   }
 
