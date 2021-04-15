@@ -8,42 +8,70 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-/**
+/***
  * 宽度优先搜索
+ * 宽度搜索就是层次遍历，层次遍历我们一般借助队列，Z形遍历借助两个stack
+ * @author sxk
  */
 public class BreadthFirstSearch extends BasicTree {
 
   public static void main(String[] args) {
     TreeNode root = createFullBinaryTree();
+    System.out.println(new BreadthFirstSearch().minDepth(createLeftFullBinaryTree()));
     System.out.println(levelOrder(root, false));
     System.out.println(levelOrder(root, true));
     System.out.println(zigzagLevelOrder(root));
   }
 
 
+  public int minDepth(TreeNode root) {
+    if (root == null) {
+      return 0;
+    }
+    int depth = 0;
+    Queue<TreeNode> queue = new LinkedList<>();
+    queue.offer(root);
+    while (!queue.isEmpty()) {
+      int qz = queue.size();
+      for (int i = 0; i < qz; i++) {
+        TreeNode cur = queue.poll();
+        if (cur.left == null && cur.right == null) {
+          return depth;
+        }
+        if (cur.left != null) {
+          queue.offer(cur.left);
+        }
+        if (cur.right != null) {
+          queue.offer(cur.right);
+        }
+      }
+      depth++;
+    }
+
+    return depth;
+  }
+
   /**
-   * 二叉树的层次遍历
-   * 返回二叉树节点值的层次遍历（逐层从左往右访问）
-   * isReverse=true 从叶子节点到跟节点的层遍历
+   * 二叉树的层次遍历 返回二叉树节点值的层次遍历（逐层从左往右访问） isReverse=true 从叶子节点到跟节点的层遍历
    */
-  public static ArrayList<ArrayList<String>> levelOrder(TreeNode root, boolean isReverse) {
-    ArrayList<ArrayList<String>> result = new ArrayList<>();
+  public static ArrayList<ArrayList<Integer>> levelOrder(TreeNode root, boolean isReverse) {
+    ArrayList<ArrayList<Integer>> result = new ArrayList<>();
     if (root == null) {
       return result;
     }
     Queue<TreeNode> queue = new LinkedList<>();
     queue.offer(root);
     while (!queue.isEmpty()) {
-      ArrayList<String> level = new ArrayList<>();
+      ArrayList<Integer> level = new ArrayList<>();
       int size = queue.size();
       for (int i = 0; i < size; i++) {
         TreeNode node = queue.poll();
-        level.add(node.self);
-        if (node.leftNode != null) {
-          queue.offer(node.leftNode);
+        level.add(node.val);
+        if (node.left != null) {
+          queue.offer(node.left);
         }
-        if (node.rightNode != null) {
-          queue.offer(node.rightNode);
+        if (node.right != null) {
+          queue.offer(node.right);
         }
       }
       result.add(level);
@@ -54,8 +82,8 @@ public class BreadthFirstSearch extends BasicTree {
     return result;
   }
 
-  public static ArrayList<ArrayList<String>> zigzagLevelOrder(TreeNode root) {
-    ArrayList<ArrayList<String>> result = new ArrayList<>();
+  public static ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
+    ArrayList<ArrayList<Integer>> result = new ArrayList<>();
     if (root == null) {
       return result;
     }
@@ -66,23 +94,23 @@ public class BreadthFirstSearch extends BasicTree {
 
     boolean normalOrder = true;
     while (!curtLevel.isEmpty()) {
-      ArrayList<String> level = new ArrayList<>();
+      ArrayList<Integer> level = new ArrayList<>();
       while (!curtLevel.isEmpty()) {
         TreeNode node = curtLevel.pop();
-        level.add(node.self);
+        level.add(node.val);
         if (normalOrder) {
-          if (node.leftNode != null) {
-            nextLevel.push(node.leftNode);
+          if (node.left != null) {
+            nextLevel.push(node.left);
           }
-          if (node.rightNode != null) {
-            nextLevel.push(node.rightNode);
+          if (node.right != null) {
+            nextLevel.push(node.right);
           }
         } else {
-          if (node.rightNode != null) {
-            nextLevel.push(node.rightNode);
+          if (node.right != null) {
+            nextLevel.push(node.right);
           }
-          if (node.leftNode != null) {
-            nextLevel.push(node.leftNode);
+          if (node.left != null) {
+            nextLevel.push(node.left);
           }
         }
       }

@@ -1,15 +1,20 @@
-package com.sxk.lc.array;
+package com.lc.array;
 
 import java.util.Arrays;
 
-public class SimpleSort {
+/**
+ * @author sxk
+ * @date 2021/4/11 5:51 下午
+ */
+public class SortTest {
 
   public static void main(String[] args) {
-    int[] array = {3, 4, 5, 1, 7, 8, 2, 6, 9};
-    System.out.println(Arrays.toString(array));
-    //bubbleSort(array);
-    selectSort(array);
-    System.out.println(Arrays.toString(array));
+    int[] arr = new int[]{2, 5, 4, 9, 6};
+    System.out.println(Arrays.toString(arr));
+    //bubbleSort(arr);
+    selectSort(arr);
+    insertSort(arr);
+    System.out.println(Arrays.toString(arr));
   }
 
   public static void bubbleSort(int[] arr) {
@@ -48,6 +53,5 @@ public class SimpleSort {
     arr[i] = arr[j];
     arr[j] = temp;
   }
-
 
 }

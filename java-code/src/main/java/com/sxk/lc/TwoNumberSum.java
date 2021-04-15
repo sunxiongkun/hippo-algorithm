@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author sxk
+ */
 public class TwoNumberSum {
 
   public static void main(String[] args) {

@@ -2,6 +2,9 @@ package com.sxk.lc.tree;
 
 import com.sxk.entity.TreeNode;
 
+/**
+ * @author sxk
+ */
 public class BinaryTreeDepth extends BasicTree {
 
   public static void main(String[] args) {
@@ -20,8 +23,8 @@ public class BinaryTreeDepth extends BasicTree {
     if (root == null) {
       return 0;
     }
-    int left = getMaxDepthDivide(root.leftNode);
-    int right = getMaxDepthDivide(root.rightNode);
+    int left = getMaxDepthDivide(root.left);
+    int right = getMaxDepthDivide(root.right);
     return Math.max(left, right) + 1;
   }
 
@@ -32,8 +35,8 @@ public class BinaryTreeDepth extends BasicTree {
     if (root == null) {
       return 0;
     }
-    int left = getMinDepthDivide(root.leftNode);
-    int right = getMinDepthDivide(root.rightNode);
+    int left = getMinDepthDivide(root.left);
+    int right = getMinDepthDivide(root.right);
     return Math.min(left, right) + 1;
   }
 
