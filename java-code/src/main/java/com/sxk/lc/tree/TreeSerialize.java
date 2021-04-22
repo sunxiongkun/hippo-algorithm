@@ -63,7 +63,7 @@ public class TreeSerialize extends BasicTree {
   /**
    * 辅助函数，通过 nodes 列表构造二叉树
    */
-  TreeNode preDeserialize(LinkedList<String> nodes) {
+  public TreeNode preDeserialize(LinkedList<String> nodes) {
     if (nodes.isEmpty()) {
       return null;
     }
