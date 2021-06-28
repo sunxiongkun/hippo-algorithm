@@ -2,11 +2,18 @@ package com.sxk.entity;
 
 import lombok.Data;
 
+/**
+ * @author sxk
+ */
 @Data
 public class ListNode {
 
   public Integer val;
   public ListNode next;
+
+  public ListNode() {
+    this.val = 0;
+  }
 
   public ListNode(Integer val) {
     this.val = val;

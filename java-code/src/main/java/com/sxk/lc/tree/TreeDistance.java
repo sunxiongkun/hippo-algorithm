@@ -38,9 +38,10 @@ public class TreeDistance {
     if (root == null) {
       return new DistanceInfo(0, 0);
     }
-
+    // 无关Math.max(左，右)
     final DistanceInfo leftInfo = maxDistanceInfo(root.left);
     final DistanceInfo rightInfo = maxDistanceInfo(root.right);
+    //与当前节点X有关 左+右+1
     int maxHeight = Math.max(leftInfo.height, rightInfo.height) + 1;
     int maxDistance = Math.max(Math.max(leftInfo.distance, rightInfo.distance),
         leftInfo.distance + rightInfo.distance + 1);

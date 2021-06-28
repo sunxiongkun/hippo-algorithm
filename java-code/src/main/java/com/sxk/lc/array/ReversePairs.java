@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 /**
  * @author sxk
- * @date 2021/4/12 3:50 下午
  */
 public class ReversePairs {
 

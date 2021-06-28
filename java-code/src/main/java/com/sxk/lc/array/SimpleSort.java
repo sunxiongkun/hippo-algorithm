@@ -2,6 +2,9 @@ package com.sxk.lc.array;
 
 import java.util.Arrays;
 
+/**
+ * @author sxk
+ */
 public class SimpleSort {
 
   public static void main(String[] args) {

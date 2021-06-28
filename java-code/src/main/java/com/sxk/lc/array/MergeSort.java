@@ -3,8 +3,7 @@ package com.sxk.lc.array;
 import java.util.Arrays;
 
 /**
- * @author sxk
- * @date 2021/4/11 10:15 下午 归并
+ * @author sxk 归并
  */
 public class MergeSort {
 
