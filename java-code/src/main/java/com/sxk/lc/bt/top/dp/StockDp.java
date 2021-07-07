@@ -1,4 +1,4 @@
-package com.sxk.lc.bt.top;
+package com.sxk.lc.bt.top.dp;
 
 /**
  * @author sxk https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
@@ -8,6 +8,7 @@ public class StockDp {
   public static void main(String[] args) {
     int[] arr = {7, 1, 5, 3, 6, 4};
     System.out.println(maxProfit(arr));
+    System.out.println(maxProfit1(arr));
     System.out.println(maxProfit3(arr));
     System.out.println(maxProfit2(arr));
   }
@@ -32,6 +33,23 @@ public class StockDp {
             Math.max(prices[r] - prices[l], dp[l + 1][r - 1]));
       }
     }
+    return dp[0][length - 1];
+  }
+
+  public static int maxProfit1(int[] prices) {
+    int length = prices.length;
+    int[][] dp = new int[length][length];
+    //base case
+    for (int l = 0; l < length - 1; l++) {
+      dp[l][l + 1] = Math.max(0, prices[l + 1] - prices[l]);
+    }
+    for (int l = length - 3; l >= 0; l--) {
+      for (int r = l + 2; r < length; r++) {
+        dp[l][r] = Math.max(Math.max(dp[l][r - 1], dp[l + 1][r]),
+            Math.max(prices[r] - prices[l], dp[l + 1][r - 1]));
+      }
+    }
+
     return dp[0][length - 1];
   }
 

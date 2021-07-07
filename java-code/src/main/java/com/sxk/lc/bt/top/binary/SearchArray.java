@@ -1,4 +1,4 @@
-package com.sxk.lc.bt.top;
+package com.sxk.lc.bt.top.binary;
 
 /**
  * @author sxk

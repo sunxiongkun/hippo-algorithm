@@ -1,4 +1,4 @@
-package com.sxk.lc.bt.top;
+package com.sxk.lc.bt.top.tree;
 
 import com.sxk.entity.TreeNode;
 import com.sxk.lc.tree.BasicTree;
