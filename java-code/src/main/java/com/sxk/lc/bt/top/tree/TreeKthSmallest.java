@@ -25,12 +25,12 @@ public class TreeKthSmallest {
     if (root == null) {
       return 0;
     }
-    kthSmallest(root, k);
+    kthSmallest(root.left, k);
     if (rank == k) {
       return root.val;
     }
     rank++;
-    kthSmallest(root, k);
+    kthSmallest(root.right, k);
     return 0;
   }
 

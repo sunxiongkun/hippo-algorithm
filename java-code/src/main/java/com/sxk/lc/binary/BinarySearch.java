@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * 前提：排序数组 二分查找
+ * @author sxk
  */
 public class BinarySearch {
 

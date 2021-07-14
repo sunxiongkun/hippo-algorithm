@@ -18,6 +18,13 @@ public class LinkListReverse {
 
   }
 
+  /**
+   * https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
+   *
+   * @param head
+   * @param k
+   * @return
+   */
   public static ListNode reverseKGroup(ListNode head, int k) {
     ListNode dummyNode = new ListNode();
     dummyNode.next = head;
@@ -40,7 +47,27 @@ public class LinkListReverse {
     }
     return dummyNode.next;
 
+  }
 
+  /**
+   * https://leetcode-cn.com/problems/swap-nodes-in-pairs/
+   *
+   * @param head
+   * @return
+   */
+  public static ListNode swapPairs(ListNode head) {
+    ListNode dummyHead = new ListNode();
+    dummyHead.next = head;
+    ListNode temp = dummyHead;
+    while (temp.next != null && temp.next.next != null) {
+      ListNode node1 = temp.next;
+      ListNode node2 = temp.next.next;
+      temp.next = node2;
+      node1.next = node2.next;
+      node2.next = node1;
+      temp = node1;
+    }
+    return dummyHead.next;
   }
 
   /**
@@ -56,7 +83,7 @@ public class LinkListReverse {
       return head;
     }
     // 因为头节点有可能发生变化，使用虚拟头节点可以避免复杂的分类讨论
-    ListNode dummyNode = new ListNode(-1);
+    ListNode dummyNode = new ListNode();
     dummyNode.next = head;
 
     ListNode pre = dummyNode;

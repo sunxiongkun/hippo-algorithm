@@ -40,8 +40,8 @@ public class LinkIntersect {
     }
     int len1 = length(headA);
     int len2 = length(headB);
-    System.out.println(len1);
-    System.out.println(len2);
+    System.out.println("headA length:" + len1);
+    System.out.println("headB length:" + len2);
     ListNode fakeNode1 = new ListNode();
     ListNode fakeNode2 = new ListNode();
     if (len1 > len2) {

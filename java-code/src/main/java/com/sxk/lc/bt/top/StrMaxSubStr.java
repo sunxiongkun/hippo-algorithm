@@ -14,6 +14,12 @@ public class StrMaxSubStr {
 
   }
 
+  /**
+   * 无重复最长子串
+   *
+   * @param s
+   * @return
+   */
   public static int lengthOfLongestSubstring(String s) {
     if (s == null || s.length() == 0) {
       return 0;
