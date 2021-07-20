@@ -1,7 +1,7 @@
-package com.sxk.lc.bt.top;
+package com.sxk.lc.bt.top.arr;
 
 /**
- * @author sxk https://leetcode-cn.com/problems/kth-largest-element-in-an-array
+ * @author sxk
  */
 public class KthArray {
 
@@ -11,6 +11,15 @@ public class KthArray {
 
   }
 
+  /**
+   * 数组中第k个最大元素
+   * <p>
+   * 215 -> https://leetcode-cn.com/problems/kth-largest-element-in-an-array/
+   *
+   * @param nums
+   * @param k
+   * @return
+   */
   public static int findKthLargest(int[] nums, int k) {
     return findKthLargest(nums, 0, nums.length - 1, nums.length - k);
   }

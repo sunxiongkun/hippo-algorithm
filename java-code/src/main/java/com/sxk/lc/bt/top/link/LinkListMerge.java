@@ -15,9 +15,11 @@ public class LinkListMerge {
 
   }
 
-  /***
-   * https://leetcode-cn.com/problems/merge-k-sorted-lists/
+  /**
+   * 合并k个有序链表
+   * 23 -> https://leetcode-cn.com/problems/merge-k-sorted-lists/
    * 给你一个链表数组，每个链表都已经按升序排列。
+   *
    * @param lists
    * @return
    */
@@ -56,6 +58,14 @@ public class LinkListMerge {
     return mergeTwoList(mergeKLists(lists, l, mid), mergeKLists(lists, mid + 1, r));
   }
 
+  /**
+   * 合并两个有序链表
+   * 21 -> https://leetcode-cn.com/problems/merge-two-sorted-lists/
+   *
+   * @param head1
+   * @param head2
+   * @return
+   */
   public static ListNode mergeTwoList(ListNode head1, ListNode head2) {
     if (head1 == null || head2 == null) {
       return head1 != null ? head1 : head2;

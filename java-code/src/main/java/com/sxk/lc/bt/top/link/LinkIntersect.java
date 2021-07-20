@@ -28,7 +28,8 @@ public class LinkIntersect {
   }
 
   /**
-   * https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
+   * 相交链表
+   * 160 -> https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
    *
    * @param headA
    * @param headB

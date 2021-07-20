@@ -8,90 +8,87 @@ import com.sxk.entity.ListNode;
 public class LinkListSort {
 
   public static void main(String[] args) {
-    ListNode head = ListNode.sequenceList(1, 4);
-    System.out.println(head);
-    reorderList(head);
-    System.out.println(head);
 
+    ListNode head = ListNode.sequenceList(1, 6);
+
+    System.out.println(head);
+    System.out.println(sortList(head));
   }
 
   /**
-   * https://leetcode-cn.com/problems/reorder-list/
-   * <p>
-   * 给定一个单链表 L：L0→L1→…→Ln-1→Ln ， 将其重新排列后变为： L0→Ln→L1→Ln-1→L2→Ln-2→…
-   * <p>
-   * 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
-   * <p>
-   * 给定链表 1->2->3->4, 重新排列为 1->4->2->3.
-   * <p>
-   * 分成两部分，将后半部分反转，拼接
+   * 排序链表
+   * 148 -> https://leetcode-cn.com/problems/sort-list/
    *
    * @param head
+   * @return
    */
-
-  public static void reorderList(ListNode head) {
-    //middle or upMiddle
-    ListNode middleNode = findMiddle(head);
-    if (middleNode == null) {
-      return;
-    }
-    ListNode middleNextNode = middleNode.next;
-    middleNode.next = null;
-    ListNode secondHead = reverse(middleNextNode);
-    mergeTwoList(head, secondHead);
+  public static ListNode sortList(ListNode head) {
+    return sortList(head, null);
   }
 
-  public static ListNode mergeTwoList(ListNode head1, ListNode head2) {
-    ListNode fakeNode = new ListNode();
-    ListNode p1 = head1;
-    ListNode p2 = head2;
-    ListNode cur = fakeNode;
-    int i = 0;
-    while (p1 != null && p2 != null) {
-      if (i++ % 2 == 0) {
-        cur.next = p1;
-        p1 = p1.next;
-      } else {
-        cur.next = p2;
-        p2 = p2.next;
+  public static ListNode sortList(ListNode head, ListNode tail) {
+    if (head == null) {
+      return null;
+    }
+    //断开
+    if (head.next == tail) {
+      head.next = null;
+      return head;
+    }
+    ListNode slow = head, fast = head;
+    while (fast != tail) {
+      slow = slow.next;
+      fast = fast.next;
+      if (fast != tail) {
+        fast = fast.next;
       }
-      cur = cur.next;
     }
-    if (p1 != null) {
-      cur.next = p1;
-    }
-    if (p2 != null) {
-      cur.next = p2;
-    }
-    return fakeNode.next;
+
+    ListNode mid = slow;
+    ListNode list1 = sortList(head, mid);
+    ListNode list2 = sortList(mid, tail);
+    return mergeTowList(list1, list2);
   }
 
   public static ListNode findMiddle(ListNode head) {
     if (head == null || head.next == null || head.next.next == null) {
       return head;
     }
-    ListNode slowNode = head.next;
-    ListNode fastNode = head.next.next;
-    while (fastNode.next != null && fastNode.next.next != null) {
-      fastNode = fastNode.next.next;
-      slowNode = slowNode.next;
+    ListNode slow = head.next;
+    ListNode fast = head.next.next;
+    while (fast.next != null && fast.next.next != null) {
+      fast = fast.next.next;
+      slow = slow.next;
     }
-    return slowNode;
+    return slow;
+  }
+
+  public static ListNode mergeTowList(ListNode head1, ListNode head2) {
+    if (head1 == null || head2 == null) {
+      return head1 != null ? head1 : head2;
+    }
+    ListNode fakeNode = new ListNode();
+    ListNode cur = fakeNode;
+    ListNode l1 = head1;
+    ListNode l2 = head2;
+    while (l1 != null && l2 != null) {
+      if (l1.val < l2.val) {
+        cur.next = l1;
+        l1 = l1.next;
+      } else {
+        cur.next = l2;
+        l2 = l2.next;
+      }
+      cur = cur.next;
+    }
+    if (l1 != null) {
+      cur.next = l1;
+    }
+    if (l2 != null) {
+      cur.next = l2;
+    }
+    return fakeNode.next;
   }
 
 
-  public static ListNode reverse(ListNode head) {
-    if (head == null) {
-      return null;
-    }
-    ListNode pre = null;
-    ListNode cur = head;
-    while (cur != null) {
-      ListNode next = cur.next;
-      cur.next = pre;
-      pre = cur;
-      cur = next;
-    }
-    return pre;
-  }
 }

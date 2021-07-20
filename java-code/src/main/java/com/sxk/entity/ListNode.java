@@ -19,6 +19,15 @@ public class ListNode {
     this.val = val;
   }
 
+  public ListNode getTail() {
+    ListNode fakeNode = this;
+    while (fakeNode.next != null) {
+      fakeNode = fakeNode.next;
+    }
+    return fakeNode;
+  }
+
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
