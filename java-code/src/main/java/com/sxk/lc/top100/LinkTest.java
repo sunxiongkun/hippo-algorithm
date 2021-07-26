@@ -244,7 +244,7 @@ public class LinkTest {
       slowNode = slowNode.next;
     }
     while (!stack.isEmpty()) {
-      if (head.val.equals(stack.pop().val)) {
+      if (head.val != stack.pop().val) {
         return false;
       }
       head = head.next;

@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class ListNode {
 
-  public Integer val;
+  public int val;
   public ListNode next;
 
   public ListNode() {
