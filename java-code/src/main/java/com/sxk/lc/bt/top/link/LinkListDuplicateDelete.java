@@ -20,6 +20,10 @@ public class LinkListDuplicateDelete {
 
     System.out.println(head);
     System.out.println(deleteDuplicates(head));
+
+    ListNode listNode = ListNode.sequenceList(0, 6);
+    System.out.println(listNode);
+    System.out.println(deleteNode(listNode, 0));
   }
 
   /**
@@ -74,4 +78,25 @@ public class LinkListDuplicateDelete {
   }
 
 
+  /**
+   * 剑指 Offer 18. 删除链表的节点 https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof/
+   *
+   * @param head
+   * @param val
+   * @return
+   */
+  public static ListNode deleteNode(ListNode head, int val) {
+    ListNode fakeNode = new ListNode();
+    fakeNode.next = head;
+    ListNode cur = fakeNode;
+    while (cur.next != null) {
+      if (cur.next.val == val) {
+        cur.next = cur.next.next;
+        break;
+      }
+      cur = cur.next;
+    }
+
+    return fakeNode.next;
+  }
 }

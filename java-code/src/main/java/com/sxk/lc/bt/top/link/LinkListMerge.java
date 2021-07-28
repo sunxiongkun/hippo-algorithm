@@ -13,6 +13,10 @@ public class LinkListMerge {
     ListNode head2 = ListNode.sequenceList(4, 8);
     System.out.println(mergeTwoList(head1, head2));
 
+    head1 = ListNode.sequenceList(0, 6);
+    head2 = ListNode.sequenceList(100, 110);
+    System.out.println(mergeInBetween(head1, 3, 4, head2));
+
   }
 
   /**
@@ -88,6 +92,52 @@ public class LinkListMerge {
     if (head2 != null) {
       cur.next = head2;
     }
+    return fakeNode.next;
+  }
+
+
+  /**
+   * 合并两个链表
+   * 1669->https://leetcode-cn.com/problems/merge-in-between-linked-lists/
+   * <p>
+   * 3 <= list1.length <= 104
+   * 1 <= a <= b < list1.length - 1
+   * 1 <= list2.length <= 104
+   * <p>
+   * 来源：力扣（LeetCode）
+   * 链接：https://leetcode-cn.com/problems/merge-in-between-linked-lists
+   * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+   *
+   * @param list1
+   * @param a
+   * @param b
+   * @param list2
+   * @return
+   */
+  public static ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
+    ListNode fakeNode = new ListNode();
+    fakeNode.next = list1;
+    ListNode cur = fakeNode;
+
+    int i;
+    //走到第a的前一个节点
+    for (i = 0; i < a; i++) {
+      cur = cur.next;
+    }
+    ListNode firstPreNode = cur;
+    //走到第b个节点
+    for (; i <= b + 1; i++) {
+      cur = cur.next;
+    }
+    ListNode secondNextNode = cur;
+    firstPreNode.next = list2;
+
+    ListNode temp = list2;
+    while (temp.next != null) {
+      temp = temp.next;
+    }
+    temp.next = secondNextNode;
+
     return fakeNode.next;
   }
 
