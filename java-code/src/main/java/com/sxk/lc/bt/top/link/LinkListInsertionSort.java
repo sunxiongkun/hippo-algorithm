@@ -63,4 +63,42 @@ public class LinkListInsertionSort {
     }
   }
 
+  /**
+   * 剑指 Offer 52. 两个链表的第一个公共节点
+   * https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/
+   *
+   * @param headA
+   * @param headB
+   * @return
+   */
+  public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    int length1 = 0;
+    int length2 = 0;
+    ListNode cur = headA;
+    while (cur != null) {
+      cur = cur.next;
+      length1++;
+    }
+    cur = headB;
+    while (cur != null) {
+      cur = cur.next;
+      length2++;
+    }
+    int diff = Math.abs(length1 - length2);
+    ListNode more = length1 > length2 ? headA : headB;
+    ListNode less = more == headA ? headB : headA;
+
+    for (int i = 0; i < diff; i++) {
+      more = more.next;
+    }
+    while (more != null && less != null) {
+      if (more == less) {
+        return less;
+      }
+      more = more.next;
+      less = less.next;
+    }
+    return null;
+  }
+
 }
