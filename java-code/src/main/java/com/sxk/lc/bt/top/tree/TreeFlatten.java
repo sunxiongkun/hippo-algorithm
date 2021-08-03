@@ -18,8 +18,9 @@ public class TreeFlatten {
 
   }
 
-  /***
-   * https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/
+  /**
+   * 二叉树展开为链表
+   * 114 -> https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/
    * 和先序遍历相同
    *
    * @param root

@@ -2,7 +2,6 @@ package com.sxk.lc.tree;
 
 import com.sxk.entity.TreeNode;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -81,7 +80,13 @@ public class TreePath extends BasicTree {
     path.pollLast();
   }
 
-
+  /**
+   * 求根节点到叶节点数字之和
+   * 129 -> https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/
+   *
+   * @param root
+   * @return
+   */
   public int sumNumbers(TreeNode root) {
     return dfs(root, 0);
   }

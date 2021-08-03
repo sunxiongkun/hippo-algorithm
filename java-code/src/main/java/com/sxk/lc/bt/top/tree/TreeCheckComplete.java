@@ -18,6 +18,17 @@ public class TreeCheckComplete {
     System.out.println(isFullTree(root1));
     System.out.println(isFullTree(BasicTree.createLeftFullBinaryTree()));
 
+    TreeNode root = new TreeNode(1);
+    root.left = new TreeNode(2);
+    root.right = new TreeNode(3);
+    root.left.left = new TreeNode(4);
+    root.left.right = new TreeNode(5);
+    root.right.right = new TreeNode(7);
+
+    System.out.println(root);
+
+    System.out.println(isCompleteTree(root));
+
 
   }
 
@@ -51,36 +62,27 @@ public class TreeCheckComplete {
   }
 
   /**
-   * https://leetcode-cn.com/problems/check-completeness-of-a-binary-tree/
+   * 二叉树的完全性检验
+   * 958 -> https://leetcode-cn.com/problems/check-completeness-of-a-binary-tree/
    *
    * @param root
    * @return
    */
   public static boolean isCompleteTree(TreeNode root) {
-    if (root == null) {
-      return true;
-    }
-    Queue<TreeNode> queue = new LinkedList<>();
-    queue.offer(root);
+    Queue<TreeNode> q = new LinkedList<>();
+    q.offer(root);
     boolean isLeaf = false;
-    while (!queue.isEmpty()) {
-      int size = queue.size();
-      for (int i = 0; i < size; i++) {
-        TreeNode cur = queue.poll();
-        if (isLeaf && (cur.left != null || cur.right != null)
-            || (cur.left == null && cur.right != null)) {
-          return false;
-        }
-        if (cur.left != null) {
-          queue.offer(cur.left);
-        }
-        if (cur.right != null) {
-          queue.offer(cur.right);
-        }
-        if (cur.left == null && cur.right == null) {
-          isLeaf = true;
-        }
+    while (!q.isEmpty()) {
+      TreeNode cur = q.poll();
+      if (isLeaf && cur != null) {
+        return false;
       }
+      if (cur == null) {
+        isLeaf = true;
+        continue;
+      }
+      q.offer(cur.left);
+      q.offer(cur.right);
     }
     return true;
   }
