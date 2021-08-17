@@ -11,6 +11,7 @@ public class TreeInvert {
   public static void main(String[] args) {
 
     TreeNode root = BasicTree.createFullBinaryTree();
+    System.out.println(root);
     TreeNode newTree = invertTree(root);
     System.out.println(newTree);
   }

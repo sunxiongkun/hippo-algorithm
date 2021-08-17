@@ -276,21 +276,6 @@ public class TreeTest implements Serializable {
     }
   }
 
-  static int rank = 0;
-
-  public static int kthSmallest(TreeNode root, int k) {
-    if (root == null) {
-      return 0;
-    }
-    kthSmallest(root.left, k);
-    if (k == rank) {
-      return root.val;
-    }
-    rank++;
-    kthSmallest(root.right, k);
-    return 0;
-  }
-
   public static TreeNode commonParent(TreeNode root, TreeNode p, TreeNode q) {
     final HashMap<TreeNode, TreeNode> parentMap = new HashMap<>();
     parentMap.put(root, null);

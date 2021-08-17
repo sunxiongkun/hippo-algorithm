@@ -13,7 +13,8 @@ public class TreeDiameter {
   }
 
   /**
-   * https://leetcode-cn.com/problems/diameter-of-binary-tree/
+   * 二叉树的直径
+   * 543 -> https://leetcode-cn.com/problems/diameter-of-binary-tree/
    *
    * @param root
    * @return
