@@ -1,4 +1,4 @@
-package com.sxk.lc.bt.top.arr;
+package com.sxk.lc.exercise.num;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,19 +8,15 @@ import java.util.stream.Collectors;
 /**
  * @author sxk
  */
-public class ArrayPermute {
+public class Code26ArrayPermute {
 
   public static void main(String[] args) {
 
-    int[] nums = {1, 2, 3};
-    System.out.println(permute(nums));
   }
 
-
   /**
-   * 数组全排列
-   * <p>
-   * 46 -> https://leetcode-cn.com/problems/permutations/
+   * 46. 全排列
+   * https://leetcode-cn.com/problems/permutations/
    *
    * @param nums
    * @return
@@ -52,4 +48,5 @@ public class ArrayPermute {
     nums[i] = nums[j];
     nums[j] = temp;
   }
+
 }

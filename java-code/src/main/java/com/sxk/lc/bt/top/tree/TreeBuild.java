@@ -77,9 +77,9 @@ public class TreeBuild {
 
     TreeNode root = new TreeNode(rootVal);
 
-    root.left = buildTree2(inorder, postorder, inLeft, inLeft + subSize - 1, postLeft,
+    root.left = buildTree2(inorder, postorder, inLeft, rootInorderIndex - 1, postLeft,
         postLeft + subSize - 1);
-    root.right = buildTree2(inorder, postorder, inLeft + subSize + 1, inRight,
+    root.right = buildTree2(inorder, postorder, rootInorderIndex + 1, inRight,
         postLeft + subSize, postRight - 1);
     return root;
   }
