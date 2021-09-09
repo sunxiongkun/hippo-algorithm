@@ -1,4 +1,4 @@
-package com.sxk.lc.exercise.str;
+package com.sxk.lc.exercise.dp;
 
 import java.util.Deque;
 import java.util.LinkedList;
