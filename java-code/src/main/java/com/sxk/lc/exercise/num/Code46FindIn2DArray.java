@@ -5,13 +5,23 @@ package com.sxk.lc.exercise.num;
  * 创建日期: 2021/9/9
  * @description:
  */
-public class Code46FindArray {
+public class Code46FindIn2DArray {
 
   public static void main(String[] args) {
 
   }
 
-  public boolean Find(int target, int[][] matrix) {
+  /**
+   * 剑指 Offer 04. 二维数组中的查找
+   * https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/
+   * <p>
+   * O(m+n)
+   *
+   * @param target
+   * @param matrix
+   * @return
+   */
+  public boolean findNumberIn2DArray(int target, int[][] matrix) {
     if (matrix == null) {
       return false;
     }
