@@ -37,4 +37,21 @@ public class Code52MaxSubArray {
     }
     return ans;
   }
+
+
+  public int maxSubArray2(int[] nums) {
+    int n = nums.length;
+    int res = nums[0];
+    int[] array = new int[n];
+    array[0] = nums[0];
+    for (int i = 1; i < n; i++) {
+      if (array[i - 1] > 0) {
+        array[i] = array[i - 1] + nums[i];
+      } else {
+        array[i] = nums[i];
+      }
+      res = Math.max(res, array[i]);
+    }
+    return res;
+  }
 }

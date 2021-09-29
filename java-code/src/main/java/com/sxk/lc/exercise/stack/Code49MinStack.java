@@ -15,31 +15,43 @@ public class Code49MinStack {
    */
   private class MinStack {
 
-    Deque<Integer> xStack;
-    Deque<Integer> minStack;
+    Deque<Node> dataStack;
 
     public MinStack() {
-      xStack = new LinkedList<>();
-      minStack = new LinkedList<>();
-      minStack.push(Integer.MAX_VALUE);
+      dataStack = new LinkedList<>();
     }
 
     public void push(int val) {
-      xStack.push(val);
-      minStack.push(Math.min(minStack.peek(), val));
+      Node node;
+      if (dataStack.isEmpty()) {
+        node = new Node(val, val);
+      } else {
+        node = new Node(val, Math.min(dataStack.peek().min, val));
+      }
+      dataStack.push(node);
     }
 
     public void pop() {
-      xStack.pop();
-      minStack.pop();
+      dataStack.pop();
     }
 
     public int top() {
-      return xStack.peek();
+      return dataStack.peek().val;
     }
 
     public int getMin() {
-      return minStack.peek();
+      return dataStack.peek().min;
+    }
+
+    private class Node {
+
+      private int val;
+      private int min;
+
+      public Node(int val, int min) {
+        this.val = val;
+        this.min = min;
+      }
     }
   }
 

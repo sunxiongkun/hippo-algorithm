@@ -1,7 +1,9 @@
 package com.sxk.lc.exercise.dp;
 
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 /**
  * @author sxk
@@ -12,6 +14,18 @@ public class Code34LongestValidParentheses {
     String str = "(()))";
     System.out.println(longestValidParentheses(str));
     System.out.println(longestValidParentheses2(str));
+
+    String str1 = "()[]{}";
+    String str2 = "{[]}";
+    String str3 = "([)]";
+    System.out.println(isValid(str1));
+    System.out.println(isValid(str2));
+    System.out.println(isValid(str3));
+
+    System.out.println("==============");
+    System.out.println(isValid2(str1));
+    System.out.println(isValid2(str2));
+    System.out.println(isValid2(str3));
   }
 
   /**
@@ -20,7 +34,7 @@ public class Code34LongestValidParentheses {
    * 时间：O(n)
    * 空间 ：O(n)
    *
-   * @param s
+   * @param str
    * @return
    */
   public static int longestValidParentheses(String str) {
@@ -86,5 +100,75 @@ public class Code34LongestValidParentheses {
     }
     return count + ans;
   }
+
+  /**
+   * 20. 有效的括号
+   * https://leetcode-cn.com/problems/valid-parentheses/
+   *
+   * @param s
+   * @return
+   */
+  public static boolean isValid(String s) {
+    char[] array = s.toCharArray();
+    if (array.length % 2 == 1) {
+      return false;
+    }
+    int count1 = 0, count2 = 0, count3 = 0;
+    for (char c : array) {
+      if (count1 < 0 || count2 < 0 || count3 < 0) {
+        return false;
+      }
+      switch (c) {
+        case '(':
+          count1++;
+          break;
+        case '{':
+          count2++;
+          break;
+        case '[':
+          count3++;
+          break;
+        case ')':
+          count1--;
+          break;
+        case '}':
+          count2--;
+          break;
+        case ']':
+          count3--;
+          break;
+        default:
+          return false;
+      }
+    }
+    return count1 == 0 && count2 == 0 && count3 == 0;
+  }
+
+  public static boolean isValid2(String s) {
+    char[] array = s.toCharArray();
+    int n = array.length;
+    if (n % 2 == 1) {
+      return false;
+    }
+
+    Map<Character, Character> pairs = new HashMap<Character, Character>() {{
+      put(')', '(');
+      put(']', '[');
+      put('}', '{');
+    }};
+    Deque<Character> stack = new LinkedList<>();
+    for (char ch : array) {
+      if (pairs.containsKey(ch)) {
+        if (stack.isEmpty() || !stack.peek().equals(pairs.get(ch))) {
+          return false;
+        }
+        stack.pop();
+      } else {
+        stack.push(ch);
+      }
+    }
+    return stack.isEmpty();
+  }
+
 
 }
