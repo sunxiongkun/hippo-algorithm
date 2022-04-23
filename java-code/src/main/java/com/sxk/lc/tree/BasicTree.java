@@ -166,7 +166,6 @@ public class BasicTree {
 
   //分治
   public static ArrayList<Integer> preOrderTraversalDivide(TreeNode root) {
-    // write your code here
     ArrayList<Integer> result = new ArrayList<>();
     if (root == null) {
       return result;
@@ -192,7 +191,6 @@ public class BasicTree {
   }
 
   public static ArrayList<Integer> inOrderTraversalDivide(TreeNode root) {
-    // write your code here
     ArrayList<Integer> result = new ArrayList<>();
     if (root == null) {
       return result;
